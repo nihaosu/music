@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      /* 禁用系统滚动条 */
+      html,body{
+        height: 100%;
+        touch-action: none;
+        overflow: hidden;
+      }
+      body{
+        font-size: .28rem;
+        background-color: #fafafa;
+      }
+      /* 清除默认样式 */
+      body,p,a,img,h1,h2,h3,ul,li,ol,dl,dt,dd{
+        margin: 0;
+        padding: 0;
+      }
+      ul,li{
+        list-style: none;
+      }
+      .spread{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        background: radial-gradient(circle, #555, #aaa);
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      //rem适配设置根元素字体大小
+      document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px';
+      window.onresize = function(){
+        document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px';
+      }
+      //阻止移动端默认事件
+      document.addEventListener("touchstart",function(event){
+        event = event || window.event;
+        event.preventDefault();
+      })
+    </script>
+  </body>
+</html>
